@@ -21,13 +21,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     cfg.bearer_access_token = std::env::var("PDM_TOKEN").ok();
 
     let resp = nodes_api::nodes_get_nodes(&cfg).await?;
-    let nodes = resp.data;
-    println!("Found {} node(s):", nodes.len());
-    for n in nodes {
-        println!(
-            "  - {} (status={:?}, cpu={:?}, mem={:?}/{:?})",
-            n.node, n.status, n.cpu, n.mem, n.maxmem,
-        );
-    }
+    // Non-PVE products: the upstream apidoc.js declares this endpoint
+    // `returns: { type: null }`, so the generator emits `data` as an
+    // untyped `serde_json::Value` (or similar). Print whatever came back.
+    println!("Response: {:?}", resp);
     Ok(())
 }
