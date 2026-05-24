@@ -45,7 +45,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     cfg.base_path = "https://pdm1.example.com:8443/api2/json".into();
     cfg.api_key = Some(clientapi_pdm::apis::configuration::ApiKey {
         prefix: None,
-        key: "PDMAPIToken=user@realm!tokenid=uuid-secret".into(),
+        key: "PDMAPIToken=user@realm!tokenid:uuid-secret".into(),
     });
 
     let status = qemu_api::qemu_vm_status(&cfg, "pdm1", 100).await?;

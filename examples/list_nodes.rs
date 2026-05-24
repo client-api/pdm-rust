@@ -4,7 +4,7 @@
 //!
 //! ```sh
 //! PDM_HOST=https://pdm.example.com:8443 \
-//! PDM_TOKEN='root@pam!auto=...' \
+//! PDM_TOKEN='root@pam!auto:...' \
 //! cargo run --example list_nodes
 //! ```
 
