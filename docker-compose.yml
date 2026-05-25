@@ -1,0 +1,12 @@
+services:
+  pdm-test:
+    image: ghcr.io/client-api/proxmox-docker/pdm-test:1.0
+    container_name: pdm-test
+    hostname: pdm-test
+    privileged: true
+    ports:
+      - "8443:8443"
+    tmpfs:
+      - /run
+      - /var/lock
+    stop_grace_period: 10s

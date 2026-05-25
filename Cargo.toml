@@ -50,3 +50,9 @@ extras = ["dep:tokio", "dep:tokio-tungstenite", "dep:futures-util", "dep:thiserr
 default = ["native-tls"]
 native-tls = ["reqwest/native-tls"]
 rustls = ["reqwest/rustls"]
+
+# Hand-written E2E test deps; preserved across regen via .openapi-generator-ignore.
+[dev-dependencies]
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "time"] }
+anyhow = "1"
+futures = "0.3"

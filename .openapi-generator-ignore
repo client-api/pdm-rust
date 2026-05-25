@@ -21,3 +21,24 @@
 #docs/*.md
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
+
+# E2E test suite (Phase 4 of the SDK rollout) — hand-written.
+tests/common/
+tests/common/**
+tests/version.rs
+tests/auth.rs
+tests/authz.rs
+tests/crud.rs
+tests/errors.rs
+tests/types.rs
+
+# Local-dev container + CI workflow for E2E.
+.github/workflows/e2e.yml
+docker-compose.yml
+
+# Self.
+.openapi-generator-ignore
+
+# Cargo.toml is hand-edited to keep the [dev-dependencies] block.
+# Re-merge generator-managed runtime deps manually after a regen.
+Cargo.toml
