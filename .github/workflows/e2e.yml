@@ -28,4 +28,9 @@ jobs:
           product: pdm
           tag: '1.0'
       - name: Run E2E tests
-        run: cargo test --tests -- --nocapture
+        # --test-threads=1 serialises scenarios within each binary so
+        # the shared product-side state (e2e-* users, ACLs) is not racy.
+        run: cargo test --tests -- --nocapture --test-threads=1
+        env:
+          PROXMOX_KVM_AVAILABLE: ${{ steps.proxmox.outputs.kvm-available }}
+          PROXMOX_CGROUPV2_AVAILABLE: ${{ steps.proxmox.outputs.cgroupv2-available }}
